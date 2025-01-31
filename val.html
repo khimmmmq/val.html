@@ -1,0 +1,90 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>will you be my valentine?</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            background-color: #f8e0ff; /* Light pink/lavender background */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh; /* Ensure full viewport height */
+        }
+
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            max-width: 500px; /* Limit width on larger screens */
+        }
+
+        h1 {
+            color: #e91e63; /* Pink heading */
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        img {
+          max-width: 300px; /* Adjust image size as needed */
+          height: auto;
+          display: block; /* Prevents image from affecting text flow */
+          margin: 20px auto; /* Centers the image */
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #yesButton {
+            background-color: #4caf50; /* Green */
+            color: white;
+        }
+
+        #noButton {
+            background-color: #f44336; /* Red */
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+      <h1>hey, read first before you close it :> (made by khimm)</h1>
+
+      <img src="b9b232952b22a6dfcee8148f2650129b.gif" alt="Valentine's Image">  <p>hey ing,</p>
+      <p>i've been thinking about you, and i want to spend valentine's day with you.  would you be my valentine?</p>
+
+
+      <div class="buttons">
+        <button id="yesButton" onclick="showResponse('yay!')">yes</button>
+        <button id="noButton" onclick="showResponse('aww...')">no</button>
+      </div>
+        <p id="response"></p>
+    </div>
+
+    <script>
+        function showResponse(message) {
+            document.getElementById("response").innerText = message;
+        }
+    </script>
+</body>
+</html> 
