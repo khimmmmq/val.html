@@ -82,9 +82,11 @@
     </div>
 <script>
     function handleClick(choice) {
+        // Show yay / aww
         document.getElementById("response").innerText =
             choice === "yes" ? "yay!" : "aww...";
 
+        // Send to Google Form
         sendToGoogleForm(choice);
     }
 
@@ -92,14 +94,24 @@
         const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSfD2Sv3gpTOHbCQ2IDkrbnNBF1Cw3MR0-9kyLiTWidlG61vlA/formResponse";
         const entryID = "entry.1625665883";
 
-        fetch(formURL + "?" + entryID + "=" + choice, {
+        // Encode the value to prevent URL issues
+        const fullURL = `${formURL}?${entryID}=${encodeURIComponent(choice)}`;
+
+        // Send request
+        fetch(fullURL, {
             method: "POST",
             mode: "no-cors"
+        }).then(() => {
+            console.log("Answer sent:", choice); // debug in console
+        }).catch(err => {
+            console.error("Error sending answer:", err);
         });
     }
 </script>
 
+
 </body>
 </html> 
+
 
 
