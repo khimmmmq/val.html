@@ -75,17 +75,31 @@
 
 
       <div class="buttons">
-        <button id="yesButton" onclick="showResponse('yay!')">yes</button>
-        <button id="noButton" onclick="showResponse('aww...')">no</button>
+        <button id="yesButton" onclick="handleClick('yes')">yes</button>
+        <button id="noButton" onclick="handleClick('no')">no</button>
       </div>
         <p id="response"></p>
     </div>
+<script>
+    function handleClick(choice) {
+        document.getElementById("response").innerText =
+            choice === "yes" ? "yay!" : "aww...";
 
-    <script>
-        function showResponse(message) {
-            document.getElementById("response").innerText = message;
-        }
-    </script>
+        sendToGoogleForm(choice);
+    }
+
+    function sendToGoogleForm(choice) {
+        const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSfD2Sv3gpTOHbCQ2IDkrbnNBF1Cw3MR0-9kyLiTWidlG61vlA/formResponse";
+        const entryID = "entry.1625665883";
+
+        fetch(formURL + "?" + entryID + "=" + choice, {
+            method: "POST",
+            mode: "no-cors"
+        });
+    }
+</script>
+
 </body>
 </html> 
+
 
