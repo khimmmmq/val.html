@@ -84,7 +84,7 @@
 <script>
 function handleClick(choice) {
     document.getElementById("response").innerText =
-        choice === "yes" ? "yay! 💗" : "aww... 😢";
+        choice === "yes" ? "yay!!!!" : "aww... ";
 
     const form = document.createElement("form");
     form.action = "https://docs.google.com/forms/d/e/1FAIpQLSfD2Sv3gpTOHbCQ2IDkrbnNBF1Cw3MR0-9kyLiTWidlG61vlA/formResponse";
@@ -93,7 +93,7 @@ function handleClick(choice) {
 
     const input = document.createElement("input");
     input.type = "hidden";
-    input.name = "entry.1625665883";
+    input.name = "entry.YOUR_REAL_ENTRY_ID";
     input.value = choice;
 
     form.appendChild(input);
@@ -108,6 +108,7 @@ function handleClick(choice) {
 
 </body>
 </html> 
+
 
 
 
