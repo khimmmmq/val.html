@@ -80,38 +80,35 @@
       </div>
         <p id="response"></p>
     </div>
+
 <script>
-    function handleClick(choice) {
-        // Show yay / aww
-        document.getElementById("response").innerText =
-            choice === "yes" ? "yay!" : "aww...";
+function handleClick(choice) {
+    document.getElementById("response").innerText =
+        choice === "yes" ? "yay! 💗" : "aww... 😢";
 
-        // Send to Google Form
-        sendToGoogleForm(choice);
-    }
+    const form = document.createElement("form");
+    form.action = "https://docs.google.com/forms/d/e/1FAIpQLSfD2Sv3gpTOHbCQ2IDkrbnNBF1Cw3MR0-9kyLiTWidlG61vlA/formResponse";
+    form.method = "POST";
+    form.target = "hidden_iframe";
 
-    function sendToGoogleForm(choice) {
-        const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSfD2Sv3gpTOHbCQ2IDkrbnNBF1Cw3MR0-9kyLiTWidlG61vlA/formResponse";
-        const entryID = "entry.1625665883";
+    const input = document.createElement("input");
+    input.type = "hidden";
+    input.name = "entry.1625665883";
+    input.value = choice;
 
-        // Encode the value to prevent URL issues
-        const fullURL = `${formURL}?${entryID}=${encodeURIComponent(choice)}`;
-
-        // Send request
-        fetch(fullURL, {
-            method: "POST",
-            mode: "no-cors"
-        }).then(() => {
-            console.log("Answer sent:", choice); // debug in console
-        }).catch(err => {
-            console.error("Error sending answer:", err);
-        });
-    }
+    form.appendChild(input);
+    document.body.appendChild(form);
+    form.submit();
+    document.body.removeChild(form);
+}
 </script>
+
+<iframe name="hidden_iframe" style="display:none;"></iframe>
 
 
 </body>
 </html> 
+
 
 
 
